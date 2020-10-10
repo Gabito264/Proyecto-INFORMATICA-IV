@@ -56,6 +56,9 @@ public class Product {
     public void setPrice(double newPrice){
         price = newPrice;
     }
+    public void setReservations(int res){
+        reservations = res;
+    }
     public int getReservations(){
         return reservations;
     }

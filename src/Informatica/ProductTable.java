@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.Scanner;
+
 public class ProductTable {
     private Hashtable<Integer, Product> tableProduct;
     private Set<Integer> keys;
@@ -18,16 +19,17 @@ public class ProductTable {
         tableProduct = new Hashtable<Integer, Product>();
         keys = tableProduct.keySet();
         file = new File("test.txt");
-        fw = new FileWriter(file, true);
-        pw = new PrintWriter(fw);
+        fw = null;
+        pw = null;
         scan = new Scanner(file);
     }
-    public void add( Product product){
+    public void add(Product product){
         tableProduct.put(Integer.valueOf(product.getCode()), product);
 
     }
-    public void remove(Product product){
-        tableProduct.remove(Integer.valueOf(product.getCode()));
+    public void remove(int code){
+
+        tableProduct.remove(Integer.valueOf(code));
     }
     public int getSize(){
        return tableProduct.size();
@@ -39,6 +41,7 @@ public class ProductTable {
     public void save() throws IOException {
         Product save;
         fw = new FileWriter(file);
+        pw = new PrintWriter(fw);
         for(Integer key : keys){
             save = tableProduct.get(key);
             pw.print(save.getName()+"#");
@@ -55,7 +58,24 @@ public class ProductTable {
         while(scan.hasNext()){
             String x = scan.nextLine();
             String[] data = x.split("#");
-            System.out.println("pato");
+            Product product = new Product();
+            String name = data[0];
+            double price = Double.valueOf(data[1]);
+            int ammount = Integer.parseInt(data[2]);
+            int reservations = Integer.parseInt(data[3]);
+            String[] day = data[4].split("/");
+            int month = Integer.parseInt(day[0]);
+            int days = Integer.parseInt(day[1]);
+            int year = Integer.parseInt(day[2]);
+            int code = Integer.parseInt(data[5]);
+            product.setName(name);
+            product.setPrice(price);
+            product.setAmmount(ammount);
+            product.setReservations(reservations);
+            product.setReleaseDate(year, month, days);
+            product.setCode(code);
+            add(product);
+            
         }
     }
 }
