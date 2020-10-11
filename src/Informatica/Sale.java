@@ -1,12 +1,17 @@
 package Informatica;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 public class Sale {
     private Product soldProduct;
     private Date dateSold;
     private int transactionCode;
+    private SimpleDateFormat format;
 
     public Sale(){
         dateSold = new Date();
+        format = new SimpleDateFormat("MM/dd/YYYY");
+        transactionCode=0;
+        soldProduct = null;
     }
     public void setSoldProduct(Product newProduct){
         soldProduct = newProduct;
@@ -14,13 +19,17 @@ public class Sale {
     public Product getProduct(){
         return soldProduct;
     }
-    public Date getDateSold(){
-        return dateSold;
+    public String getDateSold(){
+        return format.format(dateSold);
+    }
+    public void setDateSold(int year, int month, int day){
+        dateSold.setYear(year-1900);
+        dateSold.setDate(day);
+        dateSold.setMonth(month-1);
     }
     public int getTransActionCode(){
         return transactionCode;
     }
-    //igual que en Product
     public void setTransActionCode(int newCode) {
         transactionCode = newCode;
     }

@@ -7,13 +7,15 @@ public class Reservation {
     private Product wantedProduct;
     private int reservationCode;
     private SimpleDateFormat format;
+    boolean condition;
 
     public Reservation(){
         clientName= "";
         format = new SimpleDateFormat("MM/dd/YYYY");
         reservationDate = new Date();
+        condition = true;
+        wantedProduct = null;
     }
-    //igual que en Product
     public void setReservationCode(int newCode){
         reservationCode = newCode;
     }
@@ -23,6 +25,11 @@ public class Reservation {
     public String getReservationDate(){
 
         return format.format(reservationDate);
+    }
+    public void setReservationDate(int year, int month, int day){
+        reservationDate.setYear(year-1900);
+        reservationDate.setDate(day);
+        reservationDate.setMonth(month-1);
     }
     public Product getWantedProduct(){
         return wantedProduct;
@@ -35,5 +42,11 @@ public class Reservation {
     }
     public void setClientName(String newClientName){
         clientName = newClientName;
+    }
+    public boolean getCondition(){
+        return condition;
+    }
+    public void cancel(){
+        condition = false;
     }
 }
