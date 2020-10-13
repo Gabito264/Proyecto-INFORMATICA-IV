@@ -78,4 +78,10 @@ public class ProductTable {
             
         }
     }
+    public Set<Integer> getKeys(){
+        return keys;
+    }
+    public Hashtable<Integer, Product> getTable(){
+        return tableProduct;
+    }
 }

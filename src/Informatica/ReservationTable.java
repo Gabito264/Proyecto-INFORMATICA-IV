@@ -73,4 +73,10 @@ public class ReservationTable {
             add(res);
         }
     }
+    public Set<Integer> getKeys(){
+        return keys;
+    }
+    public Hashtable<Integer, Reservation> getTable(){
+        return tableRes;
+    }
 }

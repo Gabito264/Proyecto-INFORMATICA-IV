@@ -1,13 +1,12 @@
 package Informatica;
 import java.io.IOException;
-import java.util.Date;
 import java.util.Hashtable;
 import java.util.Set;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.Scanner;
-import java.util.Date;
+
 public class SaleTable {
     private Hashtable<Integer, Sale> tableSale;
     private Set<Integer> keys;
@@ -60,6 +59,12 @@ public class SaleTable {
             add(sale);
         }
 
+    }
+    public Set<Integer> getKeys(){
+        return keys;
+    }
+    public Hashtable<Integer, Sale> getTable(){
+        return tableSale;
     }
     //Investigar
     public void toExcel(){
