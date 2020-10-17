@@ -38,6 +38,7 @@ public class ProductTable {
         return tableProduct.get(Integer.valueOf(code));
     }
     //guardar del objeto al archivo de texto.
+
     public void save() throws IOException {
         Product save;
         fw = new FileWriter(file);

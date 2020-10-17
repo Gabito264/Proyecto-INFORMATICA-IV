@@ -7,7 +7,6 @@ public class Test {
 
         Product MGR = new Product();
         MGR.setName("MGR");
-
         Product MGSV = new Product();
         MGSV.setName("MGSV");
         ProductTable xD = new ProductTable();
