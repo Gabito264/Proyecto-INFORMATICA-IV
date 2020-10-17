@@ -11,10 +11,9 @@ public class Test {
         MGSV.setName("MGSV");
         ProductTable xD = new ProductTable();
         xD.load();
-        xD.remove(3421);
-        MGR.setCode(2459);
+        MGR.setCode(1234);
         xD.add(MGR);
-        MGSV.setCode(1246);
+        MGSV.setCode(1236);
         xD.add(MGSV);
         System.out.println(xD.getSize());
         xD.save();
