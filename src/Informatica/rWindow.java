@@ -9,6 +9,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class rWindow {
 
@@ -57,6 +59,11 @@ public class rWindow {
 		frame.getContentPane().add(CancelarRes);
 		
 		JButton Regresar = new JButton("Regresar");
+		Regresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
 		Regresar.setFont(new Font("Arial", Font.PLAIN, 48));
 		Regresar.setBounds(1324, 885, 572, 147);
 		frame.getContentPane().add(Regresar);

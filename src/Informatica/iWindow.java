@@ -65,17 +65,78 @@ public class iWindow {
 		JButton agregar = new JButton("Agregar Producto");
 		agregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				inventarioAgregar agregar = null;
+				try {
+					agregar = new inventarioAgregar();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				try {
+					agregar.newScreen();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				frame.dispose();
 			}
 		});
 		agregar.setFont(new Font("Arial", Font.PLAIN, 48));
 		agregar.setBounds(10, 885, 572, 147);
 		frame.getContentPane().add(agregar);
 		
+		createTable();
+		
+		JButton editar = new JButton("Editar Producto");
+		editar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		editar.setFont(new Font("Arial", Font.PLAIN, 48));
+		editar.setBounds(664, 885, 572, 147);
+		frame.getContentPane().add(editar);
+		
+		JButton regresar = new JButton("Regresar");
+		regresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
+		regresar.setFont(new Font("Arial", Font.PLAIN, 48));
+		regresar.setBounds(1324, 885, 572, 147);
+		frame.getContentPane().add(regresar);
+		
+		JLabel Label1 = new JLabel("Buscar Producto (C\u00F3digo)");
+		Label1.setFont(new Font("Arial", Font.PLAIN, 48));
+		Label1.setBounds(10, 11, 579, 90);
+		frame.getContentPane().add(Label1);
+		
+		Buscar = new JTextField();
+		Buscar.setFont(new Font("Arial", Font.PLAIN, 48));
+		Buscar.setBounds(599, 11, 572, 90);
+		frame.getContentPane().add(Buscar);
+		Buscar.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("Inventario");
+		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 58));
+		lblNewLabel.setBounds(1615, 11, 281, 90);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JButton btnBuscar = new JButton("Buscar");
+		btnBuscar.setFont(new Font("Arial", Font.PLAIN, 48));
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnBuscar.setBounds(1181, 11, 387, 90);
+		frame.getContentPane().add(btnBuscar);
+	}
+	
+	public void createTable() {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 112, 1886, 747);
 		frame.getContentPane().add(scrollPane);
-		
 		table = new JTable();
 		table.setFont(new Font("Arial", Font.PLAIN, 33));
 		table.setRowHeight(50);
@@ -111,41 +172,5 @@ public class iWindow {
 		table.getColumnModel().getColumn(2).setPreferredWidth(89);
 		 table.getTableHeader().setFont(new Font("SansSerif", Font.PLAIN, 30));
 		scrollPane.setViewportView(table);
-		
-		JButton editar = new JButton("Editar Producto");
-		editar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		editar.setFont(new Font("Arial", Font.PLAIN, 48));
-		editar.setBounds(664, 885, 572, 147);
-		frame.getContentPane().add(editar);
-		
-		JButton regresar = new JButton("Regresar");
-		regresar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		regresar.setFont(new Font("Arial", Font.PLAIN, 48));
-		regresar.setBounds(1324, 885, 572, 147);
-		frame.getContentPane().add(regresar);
-		
-		JLabel Label1 = new JLabel("Buscar Producto (C\u00F3digo)");
-		Label1.setFont(new Font("Arial", Font.PLAIN, 48));
-		Label1.setBounds(10, 11, 579, 90);
-		frame.getContentPane().add(Label1);
-		
-		Buscar = new JTextField();
-		Buscar.setFont(new Font("Arial", Font.PLAIN, 48));
-		Buscar.setBounds(599, 11, 572, 90);
-		frame.getContentPane().add(Buscar);
-		Buscar.setColumns(10);
-		
-		JLabel lblNewLabel = new JLabel("Inventario");
-		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 58));
-		lblNewLabel.setBounds(1615, 11, 281, 90);
-		frame.getContentPane().add(lblNewLabel);
 	}
 }
