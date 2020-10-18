@@ -12,6 +12,7 @@ public class Test {
         ProductTable xD = new ProductTable();
         xD.load();
         MGR.setCode(1234);
+        MGR.setPrice(1200.99);
         xD.add(MGR);
         MGSV.setCode(1236);
         xD.add(MGSV);

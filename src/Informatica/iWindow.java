@@ -1,6 +1,6 @@
 package Informatica;
 
-import java.awt.EventQueue;
+import java.awt.EventQueue; 
 
 import javax.swing.JFrame;
 import javax.swing.JTable;
@@ -13,17 +13,23 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import java.io.IOException;
+import java.util.Hashtable;
+import java.util.Set;
+
 
 public class iWindow {
 
 	private JFrame frame;
 	private JTable table;
 	private JTextField Buscar;
-
+	private ProductTable pTable;
+	private Product product;
+	private Set<Integer> keys;
 	/**
 	 * Launch the application.
 	 */
-	public static void newScreen() {
+	public static void newScreen() throws IOException{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -39,14 +45,19 @@ public class iWindow {
 	/**
 	 * Create the application.
 	 */
-	public iWindow() {
+	public iWindow() throws IOException{
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize() throws IOException{
+		
+		pTable = new ProductTable();
+		pTable.load();
+		keys = pTable.getKeys();
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1920, 1080);
 		frame.getContentPane().setLayout(null);
@@ -69,17 +80,12 @@ public class iWindow {
 		table.setFont(new Font("Arial", Font.PLAIN, 33));
 		table.setRowHeight(50);
 		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-			},
+			new Object[][] {},
 			new String[] {
 				"C\u00F3digo", "Nombre Producto", "Fecha de Salida", "Precio", "Cantidad", "No. Reservas"
 			}
 		) {
+			
 			Class[] columnTypes = new Class[] {
 				Integer.class, String.class, String.class, Double.class, Integer.class, Integer.class
 			};
@@ -93,6 +99,14 @@ public class iWindow {
 				return columnEditables[column];
 			}
 		});
+		
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
+		if(pTable.getSize() > 0) {
+		for(Integer key : keys) {
+			product = pTable.getProduct(key);
+		model.addRow(new Object[]{product.getCode(),product.getName(),product.getReleaseDate(),product.getPrice(),product.getAmmount(),product.getReservations()});
+		}
+		}
 		table.getColumnModel().getColumn(1).setPreferredWidth(128);
 		table.getColumnModel().getColumn(2).setPreferredWidth(89);
 		 table.getTableHeader().setFont(new Font("SansSerif", Font.PLAIN, 30));

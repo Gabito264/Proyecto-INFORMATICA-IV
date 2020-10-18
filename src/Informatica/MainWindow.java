@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
-
+import java.io.IOException;
 public class MainWindow {
 
 	private JFrame frame;
@@ -32,14 +32,14 @@ public class MainWindow {
 	/**
 	 * Create the application.
 	 */
-	public MainWindow() {
+	public MainWindow() throws IOException{
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize() throws IOException{
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1471, 1007);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,10 +48,22 @@ public class MainWindow {
 		JButton irInventario = new JButton("Inventario");
 		irInventario.setBackground(new Color(100, 149, 237));
 		irInventario.setFont(new Font("Arial", Font.PLAIN, 48));
-		irInventario.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				iWindow inv = new iWindow();
-				inv.newScreen();
+		irInventario.addActionListener(new ActionListener(){
+			
+			public void actionPerformed(ActionEvent e){
+				iWindow inv = null;
+				try {
+					inv = new iWindow();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				try {
+					inv.newScreen();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		irInventario.setBounds(10, 30, 706, 452);
