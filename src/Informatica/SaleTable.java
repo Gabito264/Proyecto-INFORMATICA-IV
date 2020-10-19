@@ -66,8 +66,4 @@ public class SaleTable {
     public Hashtable<Integer, Sale> getTable(){
         return tableSale;
     }
-    //Investigar
-    public void toExcel(){
-
-    }
 }
