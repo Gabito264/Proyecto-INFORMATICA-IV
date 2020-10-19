@@ -17,7 +17,7 @@ public class SaleTable {
     public SaleTable() throws IOException {
         tableSale = new Hashtable<Integer, Sale>();
         keys = tableSale.keySet();
-        file = new File("test.txt");
+        file = new File("testsales.txt");
         fw = null;
         pw = null;
         scan = new Scanner(file);

@@ -22,7 +22,6 @@ public class iWindow {
 
 	private JFrame frame;
 	private JTable table;
-	private JTextField Buscar;
 	private ProductTable pTable;
 	private Product product;
 	private Set<Integer> keys;
@@ -90,7 +89,15 @@ public class iWindow {
 		JButton editar = new JButton("Editar Producto");
 		editar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				inventarioEditar edit = null;
+				try {
+					edit = new inventarioEditar();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				edit.newScreen();
+				frame.dispose();
 			}
 		});
 		editar.setFont(new Font("Arial", Font.PLAIN, 48));
@@ -107,17 +114,6 @@ public class iWindow {
 		regresar.setBounds(1324, 885, 572, 147);
 		frame.getContentPane().add(regresar);
 		
-		JLabel Label1 = new JLabel("Buscar Producto (C\u00F3digo)");
-		Label1.setFont(new Font("Arial", Font.PLAIN, 48));
-		Label1.setBounds(10, 11, 579, 90);
-		frame.getContentPane().add(Label1);
-		
-		Buscar = new JTextField();
-		Buscar.setFont(new Font("Arial", Font.PLAIN, 48));
-		Buscar.setBounds(599, 11, 572, 90);
-		frame.getContentPane().add(Buscar);
-		Buscar.setColumns(10);
-		
 		JLabel lblNewLabel = new JLabel("Inventario");
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 58));
 		lblNewLabel.setBounds(1615, 11, 281, 90);
@@ -127,9 +123,18 @@ public class iWindow {
 		btnBuscar.setFont(new Font("Arial", Font.PLAIN, 48));
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				inventarioBuscar window = null;
+				try {
+					window = new inventarioBuscar();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				window.newScreen();
+				
 			}
 		});
-		btnBuscar.setBounds(1181, 11, 387, 90);
+		btnBuscar.setBounds(10, 11, 387, 90);
 		frame.getContentPane().add(btnBuscar);
 	}
 	
@@ -141,12 +146,12 @@ public class iWindow {
 		table.setFont(new Font("Arial", Font.PLAIN, 33));
 		table.setRowHeight(50);
 		table.setModel(new DefaultTableModel(
-			new Object[][] {},
+			new Object[][] {
+			},
 			new String[] {
-				"C\u00F3digo", "Nombre Producto", "Fecha de Salida", "Precio", "Cantidad", "No. Reservas"
+				"C\u00F3digo", "Nombre Producto", "Fecha de Lanzamiento", "Precio", "Cantidad", "No. Reservas"
 			}
 		) {
-			
 			Class[] columnTypes = new Class[] {
 				Integer.class, String.class, String.class, Double.class, Integer.class, Integer.class
 			};
@@ -160,6 +165,8 @@ public class iWindow {
 				return columnEditables[column];
 			}
 		});
+		table.getColumnModel().getColumn(1).setPreferredWidth(128);
+		table.getColumnModel().getColumn(2).setPreferredWidth(122);
 		
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		if(pTable.getSize() > 0) {
@@ -168,8 +175,6 @@ public class iWindow {
 		model.addRow(new Object[]{product.getCode(),product.getName(),product.getReleaseDate(),product.getPrice(),product.getAmmount(),product.getReservations()});
 		}
 		}
-		table.getColumnModel().getColumn(1).setPreferredWidth(128);
-		table.getColumnModel().getColumn(2).setPreferredWidth(89);
 		 table.getTableHeader().setFont(new Font("SansSerif", Font.PLAIN, 30));
 		scrollPane.setViewportView(table);
 	}

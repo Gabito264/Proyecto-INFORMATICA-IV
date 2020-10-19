@@ -18,7 +18,7 @@ public class ReservationTable {
     public ReservationTable() throws IOException{
         tableRes = new Hashtable<>();
         keys = tableRes.keySet();
-        file = new File("test.txt");
+        file = new File("testreservations.txt");
         fw = null;
         pw = null;
         scan = new Scanner(file);
