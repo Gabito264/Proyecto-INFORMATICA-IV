@@ -1,23 +1,25 @@
 package Informatica;
 
 import java.io.IOException;
-
+import java.util.Hashtable;
 public class Test {
     public static void main(String[] args) throws IOException {
 
-        Product MGR = new Product();
-        MGR.setName("MGR");
-        Product MGSV = new Product();
-        MGSV.setName("MGSV");
+        
         ProductTable xD = new ProductTable();
         xD.load();
-        MGR.setCode(1234);
-        MGR.setPrice(1200.99);
-        xD.add(MGR);
-        MGSV.setCode(1236);
-        xD.add(MGSV);
-        System.out.println(xD.getSize());
-        xD.save();
+        ReservationTable w = new ReservationTable();
+        w.load(xD);
+        Reservation test = new Reservation();
+        test.setCode(w.getSize());
+        test.setClientName("Armando Roque");
+        System.out.println(test.getClientName());
+        System.out.println(test.getReservationCode());
+        test.setWantedProduct(xD.getProduct(1349));
+        w.add(test);
+        Hashtable<Integer, Reservation> x = w.getTable();
+        w.save();
+        
 
     }
 }

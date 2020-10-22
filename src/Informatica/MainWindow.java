@@ -72,7 +72,13 @@ public class MainWindow {
 		JButton irReservaciones = new JButton("Reservaciones");
 		irReservaciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				rWindow res = new rWindow();
+				rWindow res = null;
+				try {
+					res = new rWindow();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				res.newScreen();
 			}
 		});

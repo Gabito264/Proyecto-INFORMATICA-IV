@@ -1,5 +1,5 @@
 package Informatica;
-import java.util.Hashtable;
+import java.util.Hashtable; 
 import java.util.Set;
 import java.io.File;
 import java.io.FileWriter;
@@ -16,7 +16,7 @@ public class ReservationTable {
     private Scanner scan;
 
     public ReservationTable() throws IOException{
-        tableRes = new Hashtable<>();
+        tableRes = new Hashtable<Integer, Reservation>();
         keys = tableRes.keySet();
         file = new File("testreservations.txt");
         fw = null;
@@ -41,7 +41,9 @@ public class ReservationTable {
         fw = new FileWriter(file);
         pw = new PrintWriter(fw);
         for(Integer key: keys){
+        	
             save = tableRes.get(key);
+            
             pw.print(save.getClientName()+"#");
             pw.print(save.getReservationCode()+"#");
             pw.print(save.getReservationDate()+"#");
@@ -49,6 +51,7 @@ public class ReservationTable {
             Product svd = save.getWantedProduct();
             pw.println(svd.getCode());
         }
+        pw.close();
     }
     public void load(ProductTable table){
         while(scan.hasNext()){
@@ -67,7 +70,7 @@ public class ReservationTable {
             res.setReservationCode(rCode);
             res.setReservationDate(year, month, days);
             res.setWantedProduct(product);
-            if(condition = false){
+            if(condition == false){
                 res.cancel();
             }
             add(res);

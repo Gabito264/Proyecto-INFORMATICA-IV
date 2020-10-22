@@ -46,6 +46,9 @@ public class Reservation {
     public boolean getCondition(){
         return condition;
     }
+    public void setCode(int code) {
+    	reservationCode = code;
+    }
     public void cancel(){
         condition = false;
     }

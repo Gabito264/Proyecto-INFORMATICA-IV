@@ -138,8 +138,8 @@ public class inventarioEditar {
 					NCodigo.setText(String.valueOf(product.getCode()));
 					NNombre.setText(product.getName());
 					String fecha = product.getReleaseDate();
-					NMes.setText(fecha.substring(1,2));
-					NDia.setText(fecha.substring(4,5));
+					NMes.setText(fecha.substring(0,2));
+					NDia.setText(fecha.substring(3,5));
 					NAno.setText(fecha.substring(6,10));
 					NPrecio.setText(String.valueOf(product.getPrice()));
 					NCantidad.setText(String.valueOf(product.getAmmount()));
@@ -161,7 +161,7 @@ public class inventarioEditar {
 		frame.getContentPane().add(NNombre);
 		NNombre.setColumns(10);
 		
-		JLabel lblFechaDeSalida = new JLabel("Fecha de Salida");
+		JLabel lblFechaDeSalida = new JLabel("Fecha Lanzamiento");
 		lblFechaDeSalida.setFont(new Font("Arial", Font.PLAIN, 30));
 		lblFechaDeSalida.setBounds(10, 274, 271, 96);
 		frame.getContentPane().add(lblFechaDeSalida);

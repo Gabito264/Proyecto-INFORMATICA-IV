@@ -43,6 +43,7 @@ public class SaleTable {
             Product product = sale.getProduct();
             pw.println(product.getCode());
         }
+        pw.close();
     }
     public void load(ProductTable table){
         while(scan.hasNext()){

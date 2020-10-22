@@ -158,14 +158,9 @@ public class iWindow {
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}
-			boolean[] columnEditables = new boolean[] {
-				false, false, false, false, false, false
-			};
-			public boolean isCellEditable(int row, int column) {
-				return columnEditables[column];
-			}
 		});
-		table.getColumnModel().getColumn(1).setPreferredWidth(128);
+		table.getColumnModel().getColumn(0).setPreferredWidth(49);
+		table.getColumnModel().getColumn(1).setPreferredWidth(157);
 		table.getColumnModel().getColumn(2).setPreferredWidth(122);
 		
 		DefaultTableModel model = (DefaultTableModel) table.getModel();
@@ -173,7 +168,7 @@ public class iWindow {
 		for(Integer key : keys) {
 			product = pTable.getProduct(key);
 		model.addRow(new Object[]{product.getCode(),product.getName(),product.getReleaseDate(),product.getPrice(),product.getAmmount(),product.getReservations()});
-		}
+			}
 		}
 		 table.getTableHeader().setFont(new Font("SansSerif", Font.PLAIN, 30));
 		scrollPane.setViewportView(table);
