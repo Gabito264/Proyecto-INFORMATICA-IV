@@ -23,7 +23,9 @@ public class SaleTable {
         scan = new Scanner(file);
     }
     public void add(Sale sale){
-        tableSale.put(Integer.valueOf(sale.getTransActionCode()), sale);
+    	
+    	tableSale.put(sale.getTransActionCode(), sale);
+        
     }
     
     public Sale getSale(int code){
@@ -37,7 +39,8 @@ public class SaleTable {
         fw = new FileWriter(file);
         pw = new PrintWriter(fw);
         for(Integer key: keys){
-            sale = tableSale.get(key);
+            
+        	sale = tableSale.get(key);
             pw.print(sale.getDateSold()+"#");
             pw.print(sale.getTransActionCode()+"#");
             Product product = sale.getProduct();

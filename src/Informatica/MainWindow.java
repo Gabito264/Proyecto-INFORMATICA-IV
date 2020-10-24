@@ -99,10 +99,16 @@ public class MainWindow {
 		irLVentas.setBounds(10, 507, 706, 452);
 		frame.getContentPane().add(irLVentas);
 		
-		JButton irVender = new JButton("Realizar Venta");
+		JButton irVender = new JButton("Carrito de Compras");
 		irVender.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				vWindow ventasVariable = new vWindow();
+				vWindow ventasVariable = null;
+				try {
+					ventasVariable = new vWindow();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				ventasVariable.newScreen();
 			}
 		});

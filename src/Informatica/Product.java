@@ -11,7 +11,7 @@ public class Product {
     private SimpleDateFormat format;
     public Product(){
         name= "";
-        format = new SimpleDateFormat("MM/dd/YYYY");
+        format = new SimpleDateFormat("MM/dd/yyyy");
         releaseDate = new Date();
         ammount = 0;
         price = 0;
@@ -40,10 +40,9 @@ public class Product {
     }
     public void setReleaseDate(int year, int month, int day){
         releaseDate.setYear(year-1900);
-        releaseDate.setDate(day);
         releaseDate.setMonth(month-1);
+        releaseDate.setDate(day);
     }
-    //el código va a ser el size del hash table, ya que cambia
     public int getCode(){
         return code;
     }

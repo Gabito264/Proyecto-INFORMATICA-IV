@@ -11,7 +11,7 @@ public class Reservation {
 
     public Reservation(){
         clientName= "";
-        format = new SimpleDateFormat("MM/dd/YYYY");
+        format = new SimpleDateFormat("MM/dd/yyyy");
         reservationDate = new Date();
         condition = true;
         wantedProduct = null;

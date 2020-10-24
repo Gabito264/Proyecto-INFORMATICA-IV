@@ -12,8 +12,11 @@ public class VariableSaleTable {
     public void add(Product product){
         table.put(product.getCode(), product);
     }
-    public void getProduct(int code){
-        table.get(Integer.valueOf(code));
+    public void remove(Integer code) {
+    	table.remove(code);
+    }
+    public Product getProduct(int code){
+        return table.get(Integer.valueOf(code));
     }
     public void toSaleTable(Hashtable<Integer, Sale> tableSale){
         for(Integer key: keys){

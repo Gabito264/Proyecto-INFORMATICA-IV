@@ -9,7 +9,7 @@ public class Sale {
 
     public Sale(){
         dateSold = new Date();
-        format = new SimpleDateFormat("MM/dd/YYYY");
+        format = new SimpleDateFormat("MM/dd/yyyy");
         transactionCode=0;
         soldProduct = null;
     }
