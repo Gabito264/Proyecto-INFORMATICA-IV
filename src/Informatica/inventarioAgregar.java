@@ -128,19 +128,19 @@ public class inventarioAgregar {
 		lblNombre.setBounds(10, 138, 237, 116);
 		frame.getContentPane().add(lblNombre);
 		
-		JLabel lblFecha = new JLabel("Fecha de Salida");
+		JLabel lblFecha = new JLabel("Fecha de Lanzamiento");
 		lblFecha.setFont(new Font("Arial", Font.PLAIN, 30));
-		lblFecha.setBounds(10, 243, 237, 116);
+		lblFecha.setBounds(10, 243, 311, 116);
 		frame.getContentPane().add(lblFecha);
 		
 		JLabel lblprecio = new JLabel("Precio");
 		lblprecio.setFont(new Font("Arial", Font.PLAIN, 30));
-		lblprecio.setBounds(10, 338, 237, 116);
+		lblprecio.setBounds(10, 318, 237, 116);
 		frame.getContentPane().add(lblprecio);
 		
 		JLabel lblCantidad = new JLabel("Cantidad");
 		lblCantidad.setFont(new Font("Arial", Font.PLAIN, 30));
-		lblCantidad.setBounds(10, 421, 237, 100);
+		lblCantidad.setBounds(10, 409, 237, 100);
 		frame.getContentPane().add(lblCantidad);
 		
 		JLabel lblCodigo = new JLabel("C\u00F3digo");
@@ -174,35 +174,35 @@ public class inventarioAgregar {
 		
 		JLabel lblDa = new JLabel("D\u00EDa");
 		lblDa.setFont(new Font("Arial", Font.PLAIN, 30));
-		lblDa.setBounds(257, 243, 62, 116);
+		lblDa.setBounds(362, 243, 62, 116);
 		frame.getContentPane().add(lblDa);
 		
 		JLabel lblMes = new JLabel("Mes");
 		lblMes.setFont(new Font("Arial", Font.PLAIN, 30));
-		lblMes.setBounds(402, 243, 62, 116);
+		lblMes.setBounds(521, 243, 62, 116);
 		frame.getContentPane().add(lblMes);
 		
 		JLabel lblAo = new JLabel("A\u00F1o");
 		lblAo.setFont(new Font("Arial", Font.PLAIN, 30));
-		lblAo.setBounds(601, 243, 62, 116);
+		lblAo.setBounds(726, 243, 62, 116);
 		frame.getContentPane().add(lblAo);
 		
 		Ano = new JTextField();
 		Ano.setFont(new Font("Arial", Font.PLAIN, 30));
-		Ano.setBounds(672, 250, 153, 77);
+		Ano.setBounds(798, 250, 153, 77);
 		frame.getContentPane().add(Ano);
 		Ano.setColumns(10);
 		
 		Mes = new JTextField();
 		Mes.setFont(new Font("Arial", Font.PLAIN, 30));
 		Mes.setColumns(10);
-		Mes.setBounds(474, 250, 117, 77);
+		Mes.setBounds(593, 250, 117, 77);
 		frame.getContentPane().add(Mes);
 		
 		Dia = new JTextField();
 		Dia.setFont(new Font("Arial", Font.PLAIN, 30));
 		Dia.setColumns(10);
-		Dia.setBounds(310, 250, 77, 77);
+		Dia.setBounds(434, 250, 77, 77);
 		frame.getContentPane().add(Dia);
 		
 	}

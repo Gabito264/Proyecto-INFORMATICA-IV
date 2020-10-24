@@ -24,6 +24,7 @@ public class inventarioEditar {
 	private JTextField NAno;
 	private ProductTable pTable;
 	private Product product;
+	private JTextField noticeBoard;
 	/**
 	 * Launch the application.
 	 */
@@ -84,6 +85,9 @@ public class inventarioEditar {
 		JButton btnEditar = new JButton("Realizar Cambios");
 		btnEditar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(NCodigo.getText().equals("")) {
+					noticeBoard.setText("Escriba un Código y presione buscar");
+				}else {
 				product.setName(NNombre.getText());
 				product.setCode(Integer.parseInt(NCodigo.getText()));
 				product.setPrice(Double.parseDouble(NPrecio.getText()));
@@ -110,7 +114,7 @@ public class inventarioEditar {
 					e1.printStackTrace();
 				}
 				frame.dispose();
-				
+				}
 			}
 		});
 		btnEditar.setFont(new Font("Arial", Font.PLAIN, 48));
@@ -132,9 +136,10 @@ public class inventarioEditar {
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(BCodigo.getText().equals("")) {
-				
+					noticeBoard.setText("Inserte un Código");
 				} else {
 					product = pTable.getProduct(Integer.parseInt(BCodigo.getText()));
+					if(product!=null) {
 					NCodigo.setText(String.valueOf(product.getCode()));
 					NNombre.setText(product.getName());
 					String fecha = product.getReleaseDate();
@@ -143,7 +148,11 @@ public class inventarioEditar {
 					NAno.setText(fecha.substring(6,10));
 					NPrecio.setText(String.valueOf(product.getPrice()));
 					NCantidad.setText(String.valueOf(product.getAmmount()));
-				}
+					noticeBoard.setText("");
+					} else {
+						noticeBoard.setText("Producto Deseado no Existe!");
+					}
+				} 
 			}
 		});
 		btnBuscar.setFont(new Font("Arial", Font.PLAIN, 30));
@@ -236,8 +245,9 @@ public class inventarioEditar {
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(BCodigo.getText().equals("")) {
-					
+					noticeBoard.setText("Introdusca un código");
 				} else {
+					if(pTable.getProduct(Integer.parseInt(BCodigo.getText())) != null) {
 					pTable.remove(Integer.parseInt(BCodigo.getText()));
 					try {
 						pTable.save();
@@ -259,6 +269,9 @@ public class inventarioEditar {
 						e1.printStackTrace();
 					}
 					frame.dispose();
+					} else {
+						noticeBoard.setText("Introdusca un código válido");
+					}
 				}
 			}
 		});
@@ -266,6 +279,11 @@ public class inventarioEditar {
 		btnEliminar.setBounds(10, 702, 420, 189);
 		frame.getContentPane().add(btnEliminar);
 		
+		noticeBoard = new JTextField();
+		noticeBoard.setFont(new Font("Arial", Font.PLAIN, 30));
+		noticeBoard.setBounds(440, 754, 411, 96);
+		frame.getContentPane().add(noticeBoard);
+		noticeBoard.setColumns(10);
+		
 	}
-
 }

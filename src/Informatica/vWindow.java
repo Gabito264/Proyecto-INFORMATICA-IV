@@ -125,6 +125,7 @@ public class vWindow {
 					noticeBoard.setText("Código Inválido! Producto no existe");
 				}
 				BCODE.setText("");
+				setTotal();
 			}
 		});
 		btnAgregar.setFont(new Font("Arial", Font.PLAIN, 30));
@@ -173,6 +174,7 @@ public class vWindow {
 					noticeBoard.setText("Código Inválido! No existe el Producto en el carrito!");
 				}
 				EliminateCode.setText("");
+				setTotal();
 			}
 		});
 		btnEliminar.setFont(new Font("Arial", Font.PLAIN, 30));
@@ -207,6 +209,7 @@ public class vWindow {
 					e1.printStackTrace();
 				}
 				variableTable.clear();
+				sumPrice.setText("");
 				createTable();
 			}
 		});
@@ -270,6 +273,11 @@ public class vWindow {
 	}
 	
 	public void setTotal() {
-		
+		double total = 0;
+		for(Integer key:keys) {
+			wantedProduct = vSTable.getProduct(key);
+			total+=wantedProduct.getPrice();
+		}
+		sumPrice.setText(Double.toString(total));
 	}
 }

@@ -90,7 +90,13 @@ public class MainWindow {
 		JButton irLVentas = new JButton("Lista de Ventas");
 		irLVentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				lvWindow listaVenta = new lvWindow();
+				lvWindow listaVenta = null;
+					try {
+						listaVenta = new lvWindow();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				listaVenta.newScreen();
 			}
 		});
