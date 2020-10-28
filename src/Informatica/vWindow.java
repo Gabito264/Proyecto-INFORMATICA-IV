@@ -113,6 +113,7 @@ public class vWindow {
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				wantedProduct = pTable.getProduct(Integer.parseInt(BCODE.getText()));
+				if(vSTable.getProduct(Integer.parseInt(BCODE.getText())) == null) {
 				if(wantedProduct != null) {
 					if(wantedProduct.getAmmount()>0) {
 					vSTable.add(wantedProduct);
@@ -126,7 +127,12 @@ public class vWindow {
 				}
 				BCODE.setText("");
 				setTotal();
+				} else {
+					noticeBoard.setText("Ya está este producto incluido en la tabla");
+					BCODE.setText("");
+				}
 			}
+			
 		});
 		btnAgregar.setFont(new Font("Arial", Font.PLAIN, 30));
 		btnAgregar.setBounds(1606, 302, 290, 79);
@@ -137,6 +143,7 @@ public class vWindow {
 			public void actionPerformed(ActionEvent e) {
 				if(variableTable.size()>0) {
 					variableTable.clear();
+					sumPrice.setText("");
 					createTable();
 				}
 			}
